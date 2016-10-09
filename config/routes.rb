@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, class_name: 'Db::User', controllers: {registrations: 'registrations'}
 
-  get 'pages/home' => 'high_voltage/pages#show', id: 'home'
-  get 'pages/rules' => 'high_voltage/pages#show', id: 'rules'
+  get "/pages/*id" => 'pages#show', as: :page, format: false
 
   namespace :api do
     resources :payments, only: [] do

@@ -8,6 +8,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 
+gem 'bourbon'
 gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
 

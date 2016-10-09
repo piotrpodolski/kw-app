@@ -6,13 +6,10 @@ html lang="en"
 
     title == content_for?(:title) ? yield(:title) : t('title')
 
-    = stylesheet_link_tag "application"
+    = stylesheet_link_tag 'new_home'
 
     = csrf_meta_tag
 
   body
-    = render 'layouts/top_bar'
-    = render 'layouts/flash_messages'
-
     == yield
     = javascript_include_tag "application", "data-turbolinks-track" => true
