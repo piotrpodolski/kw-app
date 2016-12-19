@@ -27,7 +27,7 @@
             td
               = reservation.items.map(&:display_name).to_sentence
             td
-              = reservation.items.map(&:cost).reduce(:+)
+              = reservation.order.cost
               |  zl
             td
               = [reservation.start_date.strftime("%d"), reservation.end_date.strftime("%d/%m/%Y")].join('-')

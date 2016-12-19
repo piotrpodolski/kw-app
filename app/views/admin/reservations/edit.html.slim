@@ -18,7 +18,7 @@
 
           = f.label 'Koszt'
           .callout
-            = @reservation.items.map(&:cost).reduce(:+)
+            = @reservation.order.cost
 
           = f.label :end_date, 'Poczatkowa data(od czwartku)'
           = f.date_field :start_date
