@@ -6,6 +6,7 @@ module Orders
 
     def create
       if @service.order.present?
+        @service.order.update_cost
         @service.order  
       else
         order = Db::Order.new
