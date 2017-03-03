@@ -9,7 +9,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 
 gem 'foundation-icons-sass-rails'
-gem 'foundation-rails'
+gem "foundation-rails", "6.3.0.0"
 
 gem 'high_voltage'
 gem 'devise'
