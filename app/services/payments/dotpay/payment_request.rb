@@ -34,10 +34,8 @@ module Payments
             Failure.new(:wrong_payment_url, message: 'Błędny link płatności, skonktaktuj się z opiekunem')
           end
         else
-          fail response
-          Failure.new(:dotpay_request_error, message: 'Błąd podczas generowania linka płatności skontaktuj sie z opiekunem')
+          Failure.new(:dotpay_request_error, message: response)
         end
-
       end
     end
   end
