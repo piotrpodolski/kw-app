@@ -12,7 +12,7 @@ class FormObject
     errors[attribute].join(separator).html_safe
   end
 
-  def self.build_cleaned(params = HashWithIndifferentAccess.new)
+  def self.build_cleaned(params = ActiveSupport::HashWithIndifferentAccess.new)
     return new if params.nil?
 
     new(InputCleaner.clean_params(params))
