@@ -1,3 +1,5 @@
+require 'results'
+
 module Admin
   class MembershipFees
     def initialize(creator_id:, allowed_params:)
@@ -21,9 +23,9 @@ module Admin
     def self.destroy(payment_id)
       fee = Db::Membership::Fee.find(payment_id)
       if fee.destroy
-        Success.new
+        ::Success.new
       else
-        Failure.new(:failure)
+        ::Failure.new(:failure)
       end
     end
 
