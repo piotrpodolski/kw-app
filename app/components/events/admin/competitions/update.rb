@@ -2,7 +2,7 @@ module Events
   module Admin
     module Competitions
       class Update
-        include Dry::Monads::Either::Mixin
+        include Dry::Monads
 
         def initialize(competitions_repository, create_competition_form)
           @competitions_repository = competitions_repository

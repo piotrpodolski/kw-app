@@ -1,14 +1,14 @@
-  module Charity
-    class DonationForm < Dry::Validation::Schema::Form
-      configure do
-        config.messages = :i18n
-        config.messages_file = 'app/components/training/errors.yml'
-        config.type_specs = true
-      end
+require 'dry-validation'
 
-      define! do
-        required(:cost).filled(:str?)
-        optional(:user_id).filled
-      end
+module Charity
+  DonationForm = Dry::Validation.Schema do
+    configure do
+      config.messages = :i18n
+      config.messages_file = 'app/components/training/errors.yml'
+      config.type_specs = true
     end
+
+    required(:cost).filled(:str?)
+    optional(:user_id).filled
   end
+end

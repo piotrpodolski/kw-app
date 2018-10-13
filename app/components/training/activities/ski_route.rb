@@ -7,16 +7,16 @@ end
 module Training
   module Activities
     class SkiRoute < Dry::Struct
-      constructor_type :strict
+      transform_keys(&:to_sym)
 
       attribute :route_type, Types::Strict::String.default('ski')
       attribute :name, Types::Strict::String
       attribute :climbing_date, Types::Strict::Date
       attribute :hidden, Types::Strict::Bool
-      attribute :rating,  Types::Strict::Int
+      attribute :rating,  Types::Strict::Integer
       attribute :colleagues_names, Types::Coercible::Array
       attribute :partners, Types::Strict::String.optional
-      attribute :length, Types::Strict::Int.optional
+      attribute :length, Types::Strict::Integer.optional
       attribute :description, Types::Strict::String
       attribute :attachments, Types::Coercible::Array
 

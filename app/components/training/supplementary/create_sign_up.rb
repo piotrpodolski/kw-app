@@ -1,7 +1,7 @@
 module Training
   module Supplementary
     class CreateSignUp
-      include Dry::Monads::Either::Mixin
+      include Dry::Monads
 
       def initialize(repository, form)
         @repository = repository

@@ -1,6 +1,6 @@
 module Reservations
   class UpdateItems
-    include Dry::Monads::Either::Mixin
+    include Dry::Monads
 
     def initialize(form)
       @form = form

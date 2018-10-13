@@ -2,7 +2,7 @@ module Events
   module Competitions
     module SignUps
       class Create
-        include Dry::Monads::Either::Mixin
+        include Dry::Monads
 
         def initialize(competitions_repository, create_sign_up_form)
           @competitions_repository = competitions_repository

@@ -6,17 +6,17 @@ end
 
 module Events
   class Competition < Dry::Struct
-    constructor_type :strict
+    transform_keys(&:to_sym)
 
-    attribute :id, Types::Strict::Int
+    attribute :id, Types::Strict::Integer
     attribute :name, Types::Strict::String
     attribute :team_name, Types::Strict::Bool
     attribute :single, Types::Strict::Bool
-    attribute :edition_sym, Types::Strict::Symbol.constructor(&:to_sym)
+    attribute :edition_sym, Types::Strict::Symbol
     attribute :baner_url, Types::String
     attribute :rules, Types::String
     attribute :closed, Types::Strict::Bool
-    attribute :limit, Types::Strict::Int
+    attribute :limit, Types::Strict::Integer
 
     class << self
       def from_record(record)

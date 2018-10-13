@@ -1,15 +1,13 @@
 module Training
   module Supplementary
-    class ManuallySignUpForm < Dry::Validation::Schema::Form
+    ManuallySignUpForm = Dry::Validation.Params do
       configure do
         config.messages = :i18n
         config.messages_file = 'app/components/training/errors.yml'
         config.type_specs = true
       end
 
-      define! do
-        required(:email).filled(:str?)
-      end
+      required(:email).filled(:str?)
     end
   end
 end

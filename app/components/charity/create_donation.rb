@@ -1,6 +1,8 @@
+require 'dry/monads/all'
+
 module Charity
   class CreateDonation
-    include Dry::Monads::Either::Mixin
+    include Dry::Monads
 
     def initialize(repository, form)
       @repository = repository

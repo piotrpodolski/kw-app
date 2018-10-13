@@ -1,7 +1,7 @@
 module Training
   module Activities
     class CreateSkiRoute
-      include Dry::Monads::Either::Mixin
+      include Dry::Monads
 
       def initialize(repository, form)
         @repository = repository

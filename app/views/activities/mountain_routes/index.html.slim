@@ -48,5 +48,6 @@
     .large-12.columns
       = render 'table', routes: @routes
 
-      .text-center
-        = paginate @routes
+      - if @routes.any?
+        .text-center
+          = paginate @routes
