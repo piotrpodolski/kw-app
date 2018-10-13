@@ -68,14 +68,14 @@ module Events
       def create_record
         Events::Admin::Competitions::Create.new(
           Events::Competitions::Repository.new,
-          Events::Admin::Competitions::CreateForm.new
+          Events::Admin::Competitions::CreateForm
         ).call(raw_inputs: competition_params)
       end
 
       def update_record(id:)
         Events::Admin::Competitions::Update.new(
           Events::Competitions::Repository.new,
-          Events::Admin::Competitions::CreateForm.new
+          Events::Admin::Competitions::CreateForm
         ).call(id: id, raw_inputs: competition_params)
       end
 

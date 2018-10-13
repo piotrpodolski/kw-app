@@ -29,7 +29,7 @@ module Training
       def create_record
         Training::Activities::CreateSkiRoute.new(
           Training::Activities::Repository.new,
-          Training::Activities::SkiRouteForm.new
+          Training::Activities::SkiRouteForm
         ).call(raw_inputs: ski_route_params)
       end
 

@@ -11,7 +11,7 @@ module Events
 
         def call(competition_id:, raw_inputs:)
           form_outputs = create_sign_up_form.call(raw_inputs.to_h)
-          return Left(form_outputs.messages(locale: I18n.locale)) unless form_outputs.success?
+          return Failure(form_outputs.messages(locale: I18n.locale)) unless form_outputs.success?
 
           sign_up = competitions_repository.create_sign_up(
             competition_id: competition_id, form_outputs: form_outputs
@@ -24,7 +24,7 @@ module Events
               .sign_up(sign_up.id).deliver_later
           end
 
-          Right(:success)
+          Success(:success)
         end
 
         private

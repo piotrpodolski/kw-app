@@ -1,3 +1,5 @@
+require 'dry/monads/all'
+
 module Training
   module Supplementary
     class SignUpsController < ApplicationController
@@ -7,12 +9,12 @@ module Training
       def manually
         either(manually_sign_up) do |result|
           result.success do
-            redirect_to :back, notice: 'Zapisałeś uczestnika i wysłałeś link do płatności!'
+            redirect_back fallback_location: wydarzenia_path, notice: 'Zapisałeś uczestnika i wysłałeś link do płatności!'
           end
 
           result.failure do |errors|
             flash[:error] = errors.values.join(", ")
-            redirect_to :back
+            redirect_back fallback_location: wydarzenia_path
           end
         end
       end
@@ -20,12 +22,12 @@ module Training
       def create
         either(create_record) do |result|
           result.success do
-            redirect_to :back, notice: 'Zapisałeś się!'
+            redirect_back fallback_location: wydarzenia_path, notice: 'Zapisałeś się!'
           end
 
           result.failure do |errors|
             flash[:error] = errors.values.join(", ")
-            redirect_to :back
+            redirect_back fallback_location: wydarzenia_path
           end
         end
       end
@@ -54,9 +56,9 @@ module Training
         if user_signed_in? && (current_user.admin? || current_user.roles.include?('events'))
           Training::Supplementary::SignUpRecord.find(params[:id])&.destroy
 
-          redirect_to :back, notice: 'Usunięto zapis!'
+          redirect_back fallback_location: wydarzenia_path, notice: 'Usunięto zapis!'
         else
-          redirect_to :back, alert: 'Nie masz uprawnień!'
+          redirect_back fallback_location: wydarzenia_path, alert: 'Nie masz uprawnień!'
         end
       end
 
@@ -65,14 +67,14 @@ module Training
       def manually_sign_up
         Training::Supplementary::ManuallySignUp.new(
           Training::Supplementary::Repository.new,
-          Training::Supplementary::ManuallySignUpForm.new
+          Training::Supplementary::ManuallySignUpForm
         ).call(raw_inputs: manually_sign_up_params)
       end
 
       def create_record
         Training::Supplementary::CreateSignUp.new(
           Training::Supplementary::Repository.new,
-          Training::Supplementary::CreateSignUpForm.new
+          Training::Supplementary::CreateSignUpForm
         ).call(raw_inputs: sign_up_params)
       end
       

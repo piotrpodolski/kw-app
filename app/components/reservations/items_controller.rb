@@ -10,7 +10,7 @@ module Reservations
 
         result.failure do |errors|
           flash[:error] = errors.values.join(", ")
-          redirect_to :back
+          redirect_back fallback_location: root_path
         end
       end
     end
@@ -23,7 +23,7 @@ module Reservations
 
     def update_items
       Reservations::UpdateItems.new(
-        Reservations::UpdateItemsForm.new
+        Reservations::UpdateItemsForm
       ).call(raw_inputs: update_items_params)
     end
 

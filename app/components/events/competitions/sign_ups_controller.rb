@@ -41,7 +41,7 @@ module Events
       def create_record
         Events::Competitions::SignUps::Create.new(
           Events::Competitions::Repository.new,
-          Events::Competitions::SignUps::CreateForm.new
+          Events::Competitions::SignUps::CreateForm
         ).call(competition_id: params[:competition_id], raw_inputs: sign_up_params)
       end
 
