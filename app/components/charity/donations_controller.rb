@@ -22,7 +22,7 @@ module Charity
     def create_record
       Charity::CreateDonation.new(
         Charity::Repository.new,
-        Charity::DonationForm.new
+        Charity::DonationForm
       ).call(raw_inputs: donation_params)
     end
 

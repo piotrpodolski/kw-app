@@ -74,7 +74,7 @@ module Training
       def create_record
         Training::Supplementary::CreateCourse.new(
           Training::Supplementary::Repository.new,
-          Training::Supplementary::CreateCourseForm.new
+          Training::Supplementary::CreateCourseForm
         ).call(raw_inputs: course_params)
       end
 
