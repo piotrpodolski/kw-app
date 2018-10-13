@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.1'
 
 # setup
-gem 'rails'
+gem 'rails', '5.1.6'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -23,8 +23,9 @@ gem 'workflow'
 gem 'virtus'
 gem 'kaminari'
 gem 'whenever', require: false
-gem 'rubyzip', '>= 1.2.1'
-gem 'axlsx', '2.1.0.pre', git: 'https://github.com/randym/axlsx.git'
+gem 'rubyzip'
+gem 'zip-zip' 
+gem 'axlsx'
 gem 'axlsx_rails'
 gem 'attributed_object', require: false, git: 'https://github.com/jgroeneveld/attributed_object.git'
 gem 'carrierwave'
@@ -50,11 +51,6 @@ end
 
 group :development do
   gem 'brakeman', require: false
-end
-
-group :test do
-  gem "simplecov"
-  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
 
 group :development, :test do
