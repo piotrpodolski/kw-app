@@ -13,6 +13,16 @@ module UserManagement
 
         UserManagement::Cost.new(year_fee: year_fee, first_fee: 50)
       end
+
+      private
+
+      def year_fee
+        current_year = Date.today.year
+
+        return 50 if Date.today.between?(Date.new(current_year, 9, 1), Date.new(current_year, 11, 15))
+
+        100
+      end
     end
   end
 end
